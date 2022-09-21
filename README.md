@@ -1,10 +1,11 @@
 # TravellingSalesPerson
 Project on the Travelling Sales Person Problem in C
+Projeto sobre o Problema do Caixeiro Viajante em C
 
-[Algorithms and Data Structures I](https://uspdigital.usp.br/jupiterweb/obterDisciplina?nomdis=&sgldis=SCC0202) course
+[Algoritmos e Estrutura de Dados I](https://uspdigital.usp.br/jupiterweb/obterDisciplina?nomdis=&sgldis=SCC0202)
 
-# File Structure
-- Specification: PDF with project specifications
-- Report: (In development) Report on utilized abstract datum and algorithm complexity
-- Src: Source codes
-- TestCases: Selected test cases with given input (\*.in) and expected output (\*.out)
+# Estrutura de arquivos
+- Specification: PDF com especificações do projeto
+- Report: (In development) Relatório contendo os TADs utilizados e complexidade de algoritmo
+- Src: Códigos fonte
+- TestCases: Casos de teste para dado input (\*.in) e output esperado (\*.out)
