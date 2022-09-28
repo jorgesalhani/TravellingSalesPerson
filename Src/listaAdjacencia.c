@@ -9,7 +9,24 @@ struct lista_adjacencia_ {
  int total_cidades;
 };
 
-ITEM* _lista_adjacencia_get_item_por_cidade(LISTA_ADJACENCIA* lista_adjacencia, ITEM* item);
+ITEM *lista_get_item(LISTA_ADJACENCIA* lista_adjacencia, int cidade)
+{
+  if (lista_adjacencia != NULL)
+  {
+    int i = 0;
+
+    while (i < lista_adjacencia_get_numero_total_cidades)
+    {
+      if (item_get_cidade(lista_adjacencia->itens[i]) == cidade)
+        return lista_adjacencia->itens[i];
+      
+      i++;
+    }      
+  }
+
+  return false;
+}
+
 
 LISTA_ADJACENCIA* lista_adjacencia_criar(int total_cidades) {
   LISTA_ADJACENCIA* lista_adjacencia = (LISTA_ADJACENCIA*) malloc(sizeof(LISTA_ADJACENCIA));

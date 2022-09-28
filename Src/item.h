@@ -1,7 +1,10 @@
 #ifndef ITEM_H
   #define ITEM_H
-  #define MAX_CONEXOES 20
+  
   #include <stdbool.h>
+
+  #define MAX_CONEXOES 20
+  #define ERRO -1;
 
   typedef struct item_ ITEM;
 
@@ -10,5 +13,10 @@
   bool item_apagar(ITEM** end_item);
   void item_imprimir(ITEM* item);
   int item_get_cidade(ITEM* item);
+
+  bool item_set_numero_conexoes(ITEM *item, int chave);
+  int item_get_numero_conexoes(ITEM *item);
+
+  int item_get_conexao(ITEM *item, int indice);
 
 #endif

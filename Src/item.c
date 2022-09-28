@@ -50,3 +50,30 @@ int item_get_cidade(ITEM* item) {
   if (item == NULL) return -1;
   return item->cidade;
 }
+
+bool item_set_numero_conexoes(ITEM *item, int chave)
+{
+  if (item != NULL)
+  {
+    item->numero_conexoes = chave;
+    return true;
+  }
+  else
+    return false;
+}
+
+int item_get_numero_conexoes(ITEM *item)
+{
+  if (item != NULL)
+    return item->numero_conexoes;
+  else
+    return ERRO;
+}
+
+int item_get_conexao(ITEM *item, int indice)
+{
+  if (item != NULL)
+    return item->conexoes[indice];
+  else
+    return ERRO;
+}
