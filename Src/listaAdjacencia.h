@@ -14,5 +14,6 @@
   bool lista_adjacencia_vazia(LISTA_ADJACENCIA* lista_adjacencia);
   bool lista_adjacencia_cheia(LISTA_ADJACENCIA* lista_adjacencia);
   void lista_adjacencia_input_conexoes(LISTA_ADJACENCIA* lista_adjacencia);
-  ITEM *lista_get_item(LISTA_ADJACENCIA* lista_adjacencia, int cidade);
+  ITEM *lista_adjacencia_get_item(LISTA_ADJACENCIA* lista_adjacencia, int cidade);
+  int lista_adjacencia_get_distancia(LISTA_ADJACENCIA* lista_adjacencia, int cidadeA, int cidadeB);
 #endif

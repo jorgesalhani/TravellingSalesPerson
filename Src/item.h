@@ -4,7 +4,6 @@
   #include <stdbool.h>
 
   #define MAX_CONEXOES 20
-  #define ERRO -1;
 
   typedef struct item_ ITEM;
 
@@ -18,5 +17,6 @@
   int item_get_numero_conexoes(ITEM *item);
 
   int item_get_conexao(ITEM *item, int indice);
+  int item_get_distancia(ITEM *item, int indice);
 
 #endif

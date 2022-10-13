@@ -1,11 +1,11 @@
 #ifndef CONEXAO_H
     #define CONEXAO_H
-
-    #define ERRO -1;
+    #include "lista.h"
 
     typedef struct conexao CONEXAO;
 
     CONEXAO* conexao_criar(int origem, int destino, int distancia);
+    CONEXAO* conexao_copy(CONEXAO* conexao);
     void conexao_apagar(CONEXAO **conexao);
 
     void conexao_set_origem(CONEXAO* conexao, int origem);
@@ -15,5 +15,6 @@
     int conexao_get_origem(CONEXAO *conexao);
     int conexao_get_destino(CONEXAO *conexao);
     int conexao_get_distancia(CONEXAO *conexao);
+    LISTA * conexao_get_visitadas(CONEXAO *conexao);
 
 #endif

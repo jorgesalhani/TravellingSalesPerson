@@ -9,19 +9,12 @@ struct lista_adjacencia_ {
  int total_cidades;
 };
 
-ITEM *lista_get_item(LISTA_ADJACENCIA* lista_adjacencia, int cidade)
+ITEM *lista_adjacencia_get_item(LISTA_ADJACENCIA* lista_adjacencia, int cidade)
 {
   if (lista_adjacencia != NULL)
   {
-    int i = 0;
-
-    while (i < lista_adjacencia_get_numero_total_cidades)
-    {
-      if (item_get_cidade(lista_adjacencia->itens[i]) == cidade)
-        return lista_adjacencia->itens[i];
-      
-      i++;
-    }      
+    if (cidade <= lista_adjacencia_get_numero_total_cidades(lista_adjacencia))
+      return lista_adjacencia->itens[cidade - 1];
   }
 
   return false;
@@ -33,6 +26,10 @@ LISTA_ADJACENCIA* lista_adjacencia_criar(int total_cidades) {
   if (lista_adjacencia != NULL) {
     lista_adjacencia->total_cidades = total_cidades;
     lista_adjacencia->num_cidades_inseridas = 0;
+    for(int i = 1; i <= total_cidades; i++){
+      ITEM* item = item_criar(i);
+      lista_adjacencia_inserir(lista_adjacencia, item);
+    }
   }
   return lista_adjacencia;
 }
@@ -46,7 +43,7 @@ void lista_adjacencia_apagar(LISTA_ADJACENCIA** end_lista_adjacencia){
     return;
   }
 
-  for (int i = 0; i < lista_adjacencia->num_cidades_inseridas; i++) {
+  for (int i = 0; i < lista_adjacencia->total_cidades; i++) {
     free(lista_adjacencia->itens[i]);
     lista_adjacencia->itens[i]= NULL;
   }
@@ -86,32 +83,23 @@ bool lista_adjacencia_cheia(LISTA_ADJACENCIA* lista_adjacencia) {
 }
 
 void lista_adjacencia_input_conexoes(LISTA_ADJACENCIA* lista_adjacencia) {
-  int num_total_cidades = lista_adjacencia_get_numero_total_cidades(lista_adjacencia);
   int cidade_A, cidade_B, dist;
-  ITEM* item_novo;
-  while (!feof(stdin)) {
-    scanf("%d %d %d\n", &cidade_A, &cidade_B, &dist);
+  int cid[16] = {1, 2, 5, 1, 4, 1, 1, 3, 7, 2, 3, 2, 3, 4, 3, 0};
+  int i = 0;
+  while (cid[i] != 0) {
+    // scanf("%d %d %d\n", &cidade_A, &cidade_B, &dist);
 
-    item_novo = item_criar(cidade_A);
-
-    ITEM* item = _lista_adjacencia_get_item_por_cidade(lista_adjacencia, item_novo);
-    if (item != NULL) {
-      item_adicionar_conexao(item, cidade_B, dist);
-      item_apagar(&item_novo);
-    }
-    else {
-      item_adicionar_conexao(item_novo, cidade_B, dist);
-      lista_adjacencia_inserir(lista_adjacencia, item_novo);
-    }
+    ITEM* item = lista_adjacencia_get_item(lista_adjacencia, cid[i]);
+    item_adicionar_conexao(item, cid[i+1], cid[i+2]);
+    item = lista_adjacencia_get_item(lista_adjacencia, cid[i+1]);
+    item_adicionar_conexao(item, cid[i], cid[i+2]);
+    i=i+3;
   }
 }
 
-ITEM* _lista_adjacencia_get_item_por_cidade(LISTA_ADJACENCIA* lista_adjacencia, ITEM* item) {
-  if (lista_adjacencia == NULL || item == NULL || lista_adjacencia_vazia(lista_adjacencia)) return NULL;
-  for (int i = 0; i < lista_adjacencia->num_cidades_inseridas; i++) {
-    if (item_get_cidade(lista_adjacencia->itens[i]) == item_get_cidade(item)) {
-      return lista_adjacencia->itens[i];
-    }
-  }
-  return NULL;
+int lista_adjacencia_get_distancia(LISTA_ADJACENCIA* lista_adjacencia, int cidadeA, int cidadeB){
+  
+  ITEM* item = lista_adjacencia_get_item(lista_adjacencia, cidadeA);
+
+  return item_get_distancia(item, cidadeB);
 }

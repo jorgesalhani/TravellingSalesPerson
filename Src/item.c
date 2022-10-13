@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include "item.h"
 
+#define ERRO -32000
+
 struct item_ {
   int cidade;
   int conexoes[MAX_CONEXOES];
@@ -74,6 +76,14 @@ int item_get_conexao(ITEM *item, int indice)
 {
   if (item != NULL)
     return item->conexoes[indice];
+  else
+    return ERRO;
+}
+
+int item_get_distancia(ITEM *item, int indice)
+{
+  if (item != NULL)
+    return item->distancias[indice];
   else
     return ERRO;
 }

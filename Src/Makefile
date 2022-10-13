@@ -1,17 +1,23 @@
-all: item.o listaAdjacencia.o main.o
-	gcc -g item.o listaAdjacencia.o main.o -o exec -std=c99 -Wall; make clean
+all: cidade.o lista.o viagem.o pilha.o main.o
+	gcc -g cidade.o lista.o viagem.o pilha.o main.o -o main -std=c99 -Wall
+
+cidade.o:
+	gcc -g -c cidade.c -o cidade.o
+
+lista.o:
+	gcc -g -c lista.c -o lista.o
+
+viagem.o:
+	gcc -g -c viagem.c -o viagem.o
+
+pilha.o:
+	gcc -g -c pilha.c -o pilha.o
 
 main.o:
 	gcc -g -c main.c -o main.o
 
-item.o:
-	gcc -g -c item.c -o item.o
-
-listaAdjacencia.o:
-	gcc -g -c listaAdjacencia.c -o listaAdjacencia.o
-
 clean:
-	rm *.o
+	rm *.o main
 	
 run:
-	valgrind ./exec < ../TestCases/1.in
+	./main

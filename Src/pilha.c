@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pilha.h"
-#include "conexao.h"
+#include "viagem.h"
 
 struct no
 {
-    CONEXAO *conexao;
+    VIAGEM *viagem;
     NO *anterior;
 };
 
@@ -15,7 +15,7 @@ struct pilha
     int tamanho;
 };
 
-PILHA *pilha_criar()
+PILHA *pilha_criar(void)
 {
     PILHA* pilha = (PILHA *) malloc(sizeof (PILHA));
 
@@ -28,7 +28,7 @@ PILHA *pilha_criar()
     return pilha;
 }
 
-void pilha_apagar(PILHA** pilha) 
+void pilha_apagar(PILHA **pilha) 
 {
     NO* topo;
 
@@ -38,7 +38,7 @@ void pilha_apagar(PILHA** pilha)
         {
             topo = (*pilha)->topo;
             (*pilha)->topo = (*pilha)->topo->anterior;
-            item_apagar(&topo->conexao);
+            viagem_apagar(&topo->viagem);
             topo->anterior = NULL;
             free(topo);
             topo = NULL;
@@ -49,13 +49,13 @@ void pilha_apagar(PILHA** pilha)
     *pilha = NULL;
 }
 
-bool pilha_empilhar(PILHA* pilha, CONEXAO* conexao)
+bool pilha_empilhar(PILHA *pilha, VIAGEM *viagem)
 {
     NO* no = (NO *) malloc(sizeof (NO));
 
     if (no != NULL)
     {
-        no->conexao = conexao;
+        no->viagem = viagem;
         no->anterior = pilha->topo;
         pilha->topo = no;
         pilha->tamanho++;
@@ -66,35 +66,35 @@ bool pilha_empilhar(PILHA* pilha, CONEXAO* conexao)
         return false;
 }
 
-CONEXAO* pilha_desempilhar(PILHA* pilha)
+VIAGEM *pilha_desempilhar(PILHA *pilha)
 {
     if (!pilha_vazia(pilha))
     {
         NO* topo = pilha->topo;
-        CONEXAO* conexao = pilha->topo->conexao;
+        VIAGEM* viagem = pilha->topo->viagem;
         pilha->topo = pilha->topo->anterior;
         topo->anterior=NULL; 
         free(topo); 
         topo = NULL;
         pilha->tamanho--;
 
-        return conexao;
+        return viagem;
     }
     else
         return NULL;
 }
 
-bool pilha_vazia(PILHA* pilha)
+bool pilha_vazia(PILHA *pilha)
 {
-    if (pilha != NULL)
-        return pilha->tamanho == 0 ? true : false;
+    if (pilha != NULL && pilha->tamanho == 0)
+        return true;
     else
         return false;
 }
 
 bool pilha_cheia(PILHA *pilha)
 {
-    NO *auxiliar = (NO*) malloc(sizeof(NO));
+    NO *auxiliar = (NO *) malloc(sizeof(NO));
 
     if (pilha != NULL && auxiliar != NULL)
     {
@@ -105,14 +105,14 @@ bool pilha_cheia(PILHA *pilha)
         return true;
 }
 
-int pilha_tamanho(PILHA* pilha){
+int pilha_tamanho(PILHA *pilha){
     return pilha != NULL ? pilha->tamanho : ERRO;
 }
 
-CONEXAO* pilha_topo(PILHA* pilha)
+VIAGEM *pilha_topo(PILHA *pilha)
 {
     if (!pilha_vazia(pilha))
-        return (pilha->topo->conexao);
+        return (pilha->topo->viagem);
     else
         return NULL;
 }
