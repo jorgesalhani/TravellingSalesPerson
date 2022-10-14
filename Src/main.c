@@ -4,13 +4,19 @@
 #include "cidade.h"
 #include "lista.h"
 #include "pilha.h"
+#include <time.h>
 
 int main(void)
 {
+    clock_t start_t, end_t;
+    double total_t;
+
+    start_t = clock();
+
     int numero_cidades, cidade_inicial;
     numero_cidades = 4;
     cidade_inicial = 1;
-    // scanf("%d\n%d\n", &numero_cidades, &cidade_inicial);
+    scanf("%d\n%d\n", &numero_cidades, &cidade_inicial);
     LISTA *lista = lista_criar();
     lista_input_conexoes(lista);
 
@@ -85,6 +91,12 @@ int main(void)
     viagem_apagar(&melhor_caminho);
     lista_apagar(&lista);
     pilha_apagar(&pilha);
+
+    end_t = clock();
+
+    total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+    printf("Total time taken by CPU: %f\n", total_t  );
+    printf("Exiting of the program...\n");
 
     return 0;
 }

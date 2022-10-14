@@ -96,22 +96,10 @@ void lista_input_conexoes(LISTA *lista)
 {
     int cidade_A, cidade_B, distancia;
     CIDADE *cidade_nova;
-    int cidades[15] = {
-        1, 2, 5,
-        1, 4, 1,
-        1, 3, 7,
-        2, 3, 2,
-        3, 4, 3
-    };
     int p = 0;
-    while (p < 15)
+    while (!feof(stdin))
     {
-        // scanf("%d %d %d\n", &cidade_A, &cidade_B, &distancia);
-        cidade_A = cidades[p];
-        cidade_B = cidades[p+1];
-        distancia = cidades[p+2];
-        p = p+3;
-
+        scanf("%d %d %d\n", &cidade_A, &cidade_B, &distancia);
         cidade_nova = cidade_criar(cidade_A);
 
         CIDADE* cidade = lista_get_cidade_por_cidade(lista, cidade_nova);
