@@ -6,6 +6,11 @@ Projeto sobre o Problema do Caixeiro Viajante em C
 
 # Estrutura de arquivos
 - Specification: PDF com especificações do projeto
-- Report: (In development) Relatório contendo os TADs utilizados e complexidade de algoritmo
+- Report: Relatório contendo os TADs utilizados e complexidade de algoritmo
 - Src: Códigos fonte
 - TestCases: Casos de teste para dado input (\*.in) e output esperado (\*.out)
+
+# Colaboração
+- [Kayky Sena](https://github.com/KaykySena)
+- [Miller Anacleto](https://github.com/MillerAnacleto)
+- [Jorge Salhani](https://github.com/jorgesalhani)
