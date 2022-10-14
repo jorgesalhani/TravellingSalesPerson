@@ -1,5 +1,4 @@
 # TravellingSalesPerson
-Project on the Travelling Sales Person Problem in C
 Projeto sobre o Problema do Caixeiro Viajante em C
 
 [Algoritmos e Estrutura de Dados I](https://uspdigital.usp.br/jupiterweb/obterDisciplina?nomdis=&sgldis=SCC0202)
