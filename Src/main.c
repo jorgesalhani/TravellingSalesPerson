@@ -8,7 +8,9 @@
 int main(void)
 {
     int numero_cidades, cidade_inicial;
-    scanf("%d\n%d\n", &numero_cidades, &cidade_inicial);
+    numero_cidades = 4;
+    cidade_inicial = 1;
+    // scanf("%d\n%d\n", &numero_cidades, &cidade_inicial);
     LISTA *lista = lista_criar();
     lista_input_conexoes(lista);
 
