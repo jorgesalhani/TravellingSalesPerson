@@ -1,5 +1,5 @@
 all: cidade.o lista.o viagem.o pilha.o main.o
-	gcc -g cidade.o lista.o viagem.o pilha.o main.o -o exec -std=c99 -Wall; make clean
+	gcc -g cidade.o lista.o viagem.o pilha.o main.o -o main -std=c99 -Wall
 
 cidade.o:
 	gcc -g -c cidade.c -o cidade.o
@@ -17,7 +17,7 @@ main.o:
 	gcc -g -c main.c -o main.o
 
 clean:
-	rm *.o
+	rm *.o main
 	
 run:
-	./exec < ../TestCases/4.in
+	./main

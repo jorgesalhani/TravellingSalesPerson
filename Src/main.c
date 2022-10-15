@@ -1,3 +1,20 @@
+/**
+ * @author Kayky Pimentel de Sena
+ * @author Miller Matheus Lima Anacleto Rocha
+ * @author Jorge Augusto Salgado Salhani
+ * 
+ * @brief Resolucao do problema do caixeiro viajante
+ * 
+ * Codigo cliente para resolução do problema do caixeiro
+ * viajante utilizando Pilha em algoritmo similar a busca em
+ * profundidade
+ * 
+ * Projeto 1 - Algoritmo e Estrutura de Dados I
+ * Grupo 5
+ * 
+ * Prof. Rudinei Goularte
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "viagem.h"
@@ -8,11 +25,6 @@
 
 int main(void)
 {
-    clock_t start_t, end_t;
-    double total_t;
-
-    start_t = clock();
-
     int numero_cidades, cidade_inicial;
     numero_cidades = 4;
     cidade_inicial = 1;
@@ -91,12 +103,5 @@ int main(void)
     viagem_apagar(&melhor_caminho);
     lista_apagar(&lista);
     pilha_apagar(&pilha);
-
-    end_t = clock();
-
-    total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-    printf("Total time taken by CPU: %f\n", total_t  );
-    printf("Exiting of the program...\n");
-
     return 0;
 }
